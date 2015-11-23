@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0px; padding: 0px }
+    #map_canvas { height: 75% ; width:75%;}
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="vrai.js"></script>
+</head>
+  
+<body>
+  <div>
+    <input id="debut" value="0">
+    <input id="fin" value="100000">
+    <input id="nbLancer" value="0">
+    <input id="nbRetour" value="0">
+    <button id="lancer">Lancer</button>
+  </div>
+ 
+  <textarea id="sortie"></textarea>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyANxFyq3P3akm5_IZFTpoc_XIiBeEKKVj0&signed_in=true&callback=initMap" async defer></script> <!--  -->
+
+  <!--<div id="outputDiv"></div>-->
+</body>
+</html>
