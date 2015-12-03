@@ -10,7 +10,12 @@
 </head>
 <body>
 	<?php
+		
+		//Acces BDD
+		include("connexion.php");
+			
 
+		
 		//parametres calcul
 		$long_depart = 2.34890667295726;
 		$lat_depart = 48.8645759658477;
