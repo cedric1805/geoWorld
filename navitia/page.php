@@ -42,10 +42,10 @@
 		//$data = file_get_contents($req, false, $context);
 		$data = file_get_contents($req, false);//, $context);
 
-		//recuperer
+		//recuperer 
 		$obj = json_decode($data, true);
 		//print_r($obj);
-		echo $journeys = $obj["journeys"][0]['co2_emission']['value'];
+		//echo $journeys = $obj["journeys"][0]['co2_emission']['value'];
 
 	?>
 
