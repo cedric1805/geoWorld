@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html> 
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -10,23 +10,51 @@
 </head>
 <body>
 	<?php
-		
+	
 		//Acces BDD
 		include("connexion.php");
-		//Appel fonction de recuperation
+
+		//Inclusions 
 		include("fct_recuperation_lat_long.php");
-		$id = recup_lat_long()["id"];
-		$long_depart = recup_lat_long()["long_depart"];
-		$lat_depart = recup_lat_long()["lat_depart"];
-		print_r($id.'</br>');
-		print_r($lat_depart.'</br>');
-		print_r($long_depart.'</br>');
-
-		//Appel fonction calcul
 		include("fct_calcul.php");
-
-		//Appel fonction remplissage
 		include("fct_remplissage.php");
+
+
+
+		//Appel fonction de recuperation
+		$tab_resulat = recup_lat_long();
+
+		//Test si le tableau de la BDD n'est pas entièrement traité
+		if ($tab_resulat["Continue?"] == True) {
+			echo "CONTINUONS !<br/>";
+			print_r($tab_resulat);
+
+			$id = $tab_resulat["id"];
+			$long_depart = $tab_resulat["long_depart"];
+			$lat_depart = $tab_resulat["lat_depart"];
+
+			print_r('</br>'.$id.'</br>');
+			print_r($lat_depart.'</br>');
+			print_r($long_depart.'</br>');
+
+			//Parametres de calcul 
+			$date = "20151118T0700"; //a modifier en JS
+
+			//Appel fonction calcul
+			$resultats_calcul = calcul ($long_depart, $lat_depart, $date);
+			print_r($resultats_calcul);
+			$co2_emission = $resultats_calcul["co2_emission"];
+
+			print_r('</br>'.$co2_emission.'</br>');
+
+			//Appel fonction remplissage 
+			remplissage($co2_emission, $id);
+
+		}
+
+		else {
+			echo "STOP !";
+		}
 
 		//Ferme la connexion MySQL
 		mysql_close($db1);

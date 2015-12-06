@@ -1,8 +1,9 @@
 <?php
-	function remplissage($a_inserer) {
+	//Fonction qui rentre le resultat du calcul 
+	function remplissage($a_inserer, $id) {
 
 		//Ecrit le resultat dans la BDD
-		$sql_update = 'UPDATE depart SET resultat = $a_inserer WHERE id = 1';
+		$sql_update = "UPDATE depart SET resultat = '$a_inserer' WHERE id = '$id' LIMIT 1 ";
 
 		//Envoie une requete à un serveur MySQL
 		$requete_update = mysql_query($sql_update);
@@ -10,8 +11,9 @@
 			die('Requête invalide : ' . mysql_error());
 		}
 
-		//Envoie une requete à un serveur MySQL
-		$requete_affiche = mysql_query('SELECT * FROM depart WHERE id = 1');
+
+/*		//Envoie une requete à un serveur MySQL
+		$requete_affiche = mysql_query("SELECT * FROM depart WHERE id = '$id' ");
 		if (!$requete_affiche) {
 			die('Requête invalide : ' . mysql_error());
 		}
@@ -25,7 +27,9 @@
 		} 
 
 		//Libère le résultat de la mémoire
-		mysql_free_result($requete_affiche);
+		mysql_free_result($requete_affiche);*/
+
+
 
 	}
 ?>
