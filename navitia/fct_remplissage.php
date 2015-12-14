@@ -1,9 +1,9 @@
 <?php
 	//Fonction qui rentre le resultat du calcul 
-	function remplissage($a_inserer, $id) {
+	function remplissage($a_inserer, $id, $colonne_nom) {
 
 		//Ecrit le resultat dans la BDD
-		$sql_update = "UPDATE depart SET resultat = '$a_inserer' WHERE id = '$id' LIMIT 1 ";
+		$sql_update = "UPDATE depart SET $colonne_nom = '$a_inserer' WHERE id = '$id' LIMIT 1 ";
 
 		//Envoie une requete à un serveur MySQL
 		$requete_update = mysql_query($sql_update);

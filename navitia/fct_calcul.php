@@ -34,9 +34,9 @@
 		//print_r($obj);
 
 		$co2_emission = $obj["journeys"][0]['co2_emission']['value'];
-		
+		$duration = $obj["journeys"][0]["duration"];
 
-		$resultats_calcul = array("co2_emission" => $co2_emission);
+		$resultats_calcul = array("co2_emission" => $co2_emission , "duration" => $duration);
 
 		
 

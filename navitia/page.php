@@ -24,6 +24,8 @@
 		//Appel fonction de recuperation
 		$tab_resulat = recup_lat_long();
 
+		
+
 		//Test si le tableau de la BDD n'est pas entièrement traité
 		if ($tab_resulat["Continue?"] == True) {
 			echo "CONTINUONS !<br/>";
@@ -38,23 +40,29 @@
 			print_r($long_depart.'</br>');
 
 			//Parametres de calcul 
-			$date = "20151118T0700"; //a modifier en JS
+			$date = "20151218T0700"; //a modifier en JS
 
 			//Appel fonction calcul
 			$resultats_calcul = calcul ($long_depart, $lat_depart, $date);
 			print_r($resultats_calcul);
 			$co2_emission = $resultats_calcul["co2_emission"];
+			$duration = $resultats_calcul["duration"]/60; //en minute
 
 			print_r('</br>'.$co2_emission.'</br>');
+			print_r($duration.'</br>');
 
 			//Appel fonction remplissage 
-			remplissage($co2_emission, $id);
+			remplissage('ok', $id, 'resultat');
+			remplissage($co2_emission, $id, 'co2');
+			remplissage($duration, $id, 'duration');
+
 
 		}
 
 		else {
 			echo "STOP !";
 		}
+		
 
 		//Ferme la connexion MySQL
 		mysql_close($db1);
